@@ -57,7 +57,12 @@
 		/>
 		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 	</head>
-
+	<script>
+		if (window.location.href.endsWith("index.html")) {
+			window.location.href = window.location.href.replace("index.html", "g.html");
+		}
+	</script>
+	
 	<body style="overflow: hidden">
 		<div class="failtoast">
 			<div class="failtoast-content">
