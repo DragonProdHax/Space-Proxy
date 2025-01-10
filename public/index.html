@@ -58,8 +58,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 	</head>
 	<script>
-		if (window.location.href.endsWith("index.html")) {
-			window.location.href = window.location.href.replace("index.html", "g.html");
+		if (window.location.pathname === "/" || window.location.pathname === "") {
+			window.location.pathname = "g";
 		}
 	</script>
 	
