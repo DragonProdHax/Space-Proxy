@@ -4,5 +4,11 @@
 		"url": "https://zohoho.org/_games/1v1lol/",
 		"img": "/assets/imgs/g/1v1_LOL.webp",
 		"categories": ["all", "popular", "multiplayer"]
+	},
+	{
+		"name": "Roblox",
+		"url": "https://nowgg.lol/",
+		"img": "https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht",
+		"categories": ["all", "popular", "multiplayer"]
 	}
 ]
