@@ -4,50 +4,5 @@
 		"url": "https://playaway.pages.dev/",
 		"img": "/assets/imgs/sb/Google.webp",
 		"bg": "#fff"
-	},
-	{
-		"name": "YouTube",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/YouTube.webp"
-	},
-	{
-		"name": "Spotify",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/Spotify.webp"
-	},
-	{
-		"name": "Discord",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/Discord.webp"
-	},
-	{
-		"name": "ChatGPT",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/ChatGPT.webp"
-	},
-	{
-		"name": "Geforce Now",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/Geforce_Now.webp"
-	},
-	{
-		"name": "GitHub",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/GitHub.webp"
-	},
-	{
-		"name": "Twitch",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/Twitch.webp"
-	},
-	{
-		"name": "ESPN",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/ESPN.webp"
-	},
-	{
-		"name": "TikTok",
-		"url": "https://playaway.pages.dev/",
-		"img": "/assets/imgs/sb/TikTok.webp"
 	}
 ]
