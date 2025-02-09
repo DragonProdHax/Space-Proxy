@@ -196,5 +196,11 @@
 		"url": "https://wattpad.com",
 		"img": "/assets/imgs/a/Wattpad.webp",
 		"categories": ["all", "popular", "media"]
+	},
+	{
+		"name": "GMS Movie",
+		"url": "https://gms-movie-playaway.onrender.com/",
+		"img": "/assets/imgs/a/Wattpad.webp",
+		"categories": ["all", "popular", "media"]
 	}
 ]
