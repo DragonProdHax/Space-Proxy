@@ -22,5 +22,11 @@
 		"url": "https://play.fancade.com/63BA239C20C40BF3",
 		"img": "https://www4.minijuegosgratis.com/v3/games/thumbnails/244153_1.jpg",
 		"categories": ["all", "popular", "multiplayer"]
+	},
+	{
+		"name": "Infinite Craft",
+		"url": "https://infinite-craft.com/infinite-craft/",
+		"img": "https://www4.minijuegosgratis.com/v3/games/thumbnails/244153_1.jpg",
+		"categories": ["all", "popular", "multiplayer"]
 	}
 ]
