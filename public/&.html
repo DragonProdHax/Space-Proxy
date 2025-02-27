@@ -508,4 +508,73 @@
 		document.querySelector("body > ul").remove();
 	}, 1000);
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+	saveIntoSpaceSrc()
+</script>
+<!-- Include SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+// Waits for 2 seconds and then shows a SweetAlert
+async function showTokenAlert() {
+    try {
+        // Wait for 2 seconds
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Try to get the src value
+        const element = document.querySelector("#intospace");
+        if (!element) {
+            console.error("Element with id 'intospace' not found.");
+            return;
+        }
+
+        const src = element.src;
+        if (!src) {
+            console.error("No src attribute found on element.");
+            return;
+        }
+
+        // Extract the token part from the src URL
+        const token = src.split("/").pop();
+        if (!token) {
+            console.error("Could not extract token from src URL.");
+            return;
+        }
+
+        console.log("Token extracted:", token); // Debug: log token
+
+        // Display the SweetAlert with the token
+        Swal.fire({
+            title: 'Your Youtube Token',
+            text: token,
+            showConfirmButton: false,
+            footer: `<button id="copyButton" class="swal2-confirm swal2-styled">Copy</button>`,
+            didOpen: () => {
+                // Add event listener to the copy button
+                document.getElementById('copyButton').addEventListener('click', () => {
+                    navigator.clipboard.writeText(token)
+                        .then(() => {
+                            Swal.fire('Copied!', 'The token has been copied to your clipboard.', 'success');
+                        })
+                        .catch(err => {
+                            Swal.fire('Error', 'Failed to copy the token.', 'error');
+                        });
+                });
+            }
+        });
+    } catch (error) {
+        console.error("Error in showTokenAlert:", error);
+    }
+}
+
+// Trigger the function to test
+window.addEventListener('load', () => {
+    showTokenAlert();
+});
+</script>
+
+
 </html>

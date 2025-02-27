@@ -93,36 +93,46 @@ function startURLMonitoring() {
 	setInterval(checkIframeURL, 250);
 }
 
-function updateGointospace2(url) {
-	document.querySelectorAll('.search-header__icon')[0].style.display = 'none';
+function updateGointospace2() {
+    document.querySelectorAll('.search-header__icon')[0].style.display = 'none';
 
-	let cleanedUrl = __uv$config.decodeUrl(
-		url.split(swConfigSettings.prefix).pop()
-	);
+    // Get the current page URL
+    let currentUrl = window.location.href;
 
-	let isSecure = cleanedUrl.startsWith('https://');
+    // Extract the URL between the first "?" and the last "?"
+    let start = currentUrl.indexOf('?') + 1;
+    let end = currentUrl.lastIndexOf('?');
 
-	cleanedUrl = cleanedUrl.replace(/^https?:\/\//, '');
+    if (start > 0 && end > start) {
+        var extractedUrl = currentUrl.substring(start, end);
+    } else {
+        address2.value = 'No valid URL found!';
+        return;
+    }
 
-	if (cleanedUrl === 'a`owt8bnalk') {
-		address2.value = 'Loading...';
-	} else if (__uv$config.decodeUrl(cleanedUrl).endsWith('/500')) {
-		address2.value = 'Internal Server Error! Did you load a broken link?';
-	} else {
-		address2.value = cleanedUrl;
-	}
+    let cleanedUrl = __uv$config.decodeUrl(extractedUrl);
+    let isSecure = cleanedUrl.startsWith('https://');
 
-	let webSecurityIcon = document.querySelector('.webSecurityIcon');
-	if (isSecure) {
-		webSecurityIcon.id = 'secure';
-		webSecurityIcon.innerHTML =
-			'<span class="material-icons" style="font-size: 20px !important; height: 16px !important; width: 16px !important; padding: 0 !important; background-color: transparent !important;">lock</span>';
-	} else {
-		webSecurityIcon.id = 'notSecure';
-		webSecurityIcon.innerHTML =
-			'<span class="material-icons" style="font-size: 20px !important; height: 16px !important; width: 16px !important; padding: 0 !important; background-color: transparent !important;">lock_open</span>';
-	}
+    if (cleanedUrl === 'a`owt8bnalk') {
+        address2.value = 'Loading...';
+    } else if (__uv$config.decodeUrl(cleanedUrl).endsWith('/500')) {
+        address2.value = 'Internal Server Error! Did you load a broken link?';
+    } else {
+        address2.value = cleanedUrl;
+    }
+
+    let webSecurityIcon = document.querySelector('.webSecurityIcon');
+    if (isSecure) {
+        webSecurityIcon.id = 'secure';
+        webSecurityIcon.innerHTML =
+            '<span class="material-icons" style="font-size: 20px !important; height: 16px !important; width: 16px !important; padding: 0 !important; background-color: transparent !important;">lock</span>';
+    } else {
+        webSecurityIcon.id = 'notSecure';
+        webSecurityIcon.innerHTML =
+            '<span class="material-icons" style="font-size: 20px !important; height: 16px !important; width: 16px !important; padding: 0 !important; background-color: transparent !important;">lock_open</span>';
+    }
 }
+
 
 address2.addEventListener('click', function () {
 	let currentValue = this.value;
@@ -478,6 +488,40 @@ function injectHideScript(iframeDocument) {
 		iframeDocument.body.appendChild(script);
 		resolve();
 	});
+}
+
+async function saveIntoSpaceSrc() {
+    const iframe = document.querySelector("#intospace");
+
+    if (iframe) {
+        const iframeSrc = iframe.src;
+
+        // Save iframe src to the backend via POST request
+        try {
+            const response = await fetch('https://backend-playaway.vercel.app/api/saveIframeSrc', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ src: iframeSrc })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                console.log("Iframe src saved to backend:", iframeSrc);
+            } else {
+                console.error("Failed to save iframe src:", data.error);
+            }
+        } catch (error) {
+            console.error("Error saving iframe src to backend:", error);
+        }
+
+        // Save iframe src to localStorage
+        localStorage.setItem("intospaceSrc", iframeSrc);
+        console.log("Iframe src saved to localStorage:", iframeSrc);
+    } else {
+        console.warn("#intospace iframe not found.");
+    }
 }
 
 function inspectelement() {
